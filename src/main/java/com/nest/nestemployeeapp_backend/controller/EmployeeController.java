@@ -30,8 +30,14 @@ public class EmployeeController {
 
     @CrossOrigin("*")
     @PostMapping(path = "/empLogin", consumes = "application/json", produces = "application/json")
-    public List<EmployeeModel> empLogin(@RequestBody EmployeeModel emp){
-        return (List<EmployeeModel>) employeeDao.empLogin(emp.getUsername(),emp.getPassword());
+    public HashMap<String, String> empLogin(@RequestBody EmployeeModel emp){
+        List<EmployeeModel> result = (List<EmployeeModel>) employeeDao.empLogin(emp.getUsername(),emp.getPassword());
+        HashMap<String, String> map = new HashMap<>();
+        if(result.size()>0){
+            map.put("status","success");
+            map.put("employeeId",String.valueOf(result.get(0).getId()));
+        }
+        return map;
     }
 
     @CrossOrigin("*")
