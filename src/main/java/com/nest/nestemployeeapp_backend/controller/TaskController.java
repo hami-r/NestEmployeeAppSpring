@@ -34,7 +34,7 @@ public class TaskController {
     @CrossOrigin("*")
     @PostMapping(path = "/viewEmpTask", consumes = "application/json", produces = "application/json")
     public List<TaskModel> viewEmpTask(@RequestBody TaskModel task){
-        return (List<TaskModel>) taskDao.viewEmpTask(String.valueOf(task.getEmployeeId()));
+        return (List<TaskModel>) taskDao.viewEmpTask(task.getEmployeeId());
     }
 
     @CrossOrigin("*")

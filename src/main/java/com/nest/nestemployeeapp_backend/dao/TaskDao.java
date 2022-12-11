@@ -15,8 +15,8 @@ public interface TaskDao extends CrudRepository<TaskModel,Integer> {
     @Query(value = "SELECT e.name,e.designation,e.email,e.mobile_no,t.task,t.status FROM `employees` AS e JOIN `tasks`as t ON e.id = t.employee_id ",nativeQuery = true)
     List<Map<String,String>> viewAllTasks();
 
-    @Query(value = "SELECT * FROM `tasks` WHERE `employee_id`= :employeeId",nativeQuery = true)
-    List<TaskModel> viewEmpTask(String employeeId);
+    @Query(value = "SELECT * FROM `tasks` WHERE `employee_id`= :empId",nativeQuery = true)
+    List<TaskModel> viewEmpTask(Integer empId);
 
     @Modifying
     @Transactional

@@ -11,6 +11,6 @@ public interface EmployeeDao extends CrudRepository<EmployeeModel,Integer> {
     @Query(value = "SELECT * FROM `employees` WHERE `username` = :username AND `password`= :password",nativeQuery = true)
     List<EmployeeModel> empLogin(String username,String password);
 
-    @Query(value = "SELECT * FROM `employees` WHERE `id` = employeeId",nativeQuery = true)
-    List<EmployeeModel> viewProfile(String employeeId);
+    @Query(value = "SELECT * FROM `employees` WHERE `id` = :empId",nativeQuery = true)
+    List<EmployeeModel> viewProfile(String empId);
 }
